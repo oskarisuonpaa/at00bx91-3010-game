@@ -1000,8 +1000,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d289cedfb4efe4dafe9cf405c38d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 15
+  moveSpeed: 20
   scoreMultiplier: 1
+  playerCamera: {fileID: 0}
+  baseCameraSize: 20
+  cameraZoomMultiplier: 2
+  speedDecayRate: 0.05
+  minSpeed: 2
 --- !u!212 &1642773370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1123,6 +1128,8 @@ MonoBehaviour:
   starSprite: {fileID: -4942353839622133596, guid: 9f0f21ef6e71d98449a4b98b1f7b9483, type: 3}
   shieldSprite: {fileID: -8051760441165809692, guid: 9f0f21ef6e71d98449a4b98b1f7b9483, type: 3}
   speedSprite: {fileID: 5912956795429546524, guid: 9f0f21ef6e71d98449a4b98b1f7b9483, type: 3}
+  baseMass: 1
+  massPerGrowth: 0.5
 --- !u!58 &1642773374
 CircleCollider2D:
   m_ObjectHideFlags: 0
