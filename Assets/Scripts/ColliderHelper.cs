@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(CircleCollider2D))]
 /// <summary>
 /// Helper script to fine-tune collider behavior.
 /// Attach this to objects that need adjusted collision detection.
@@ -33,7 +34,7 @@ public class ColliderHelper : MonoBehaviour
     void Start()
     {
         // Auto-find collider if not assigned
-        if (!Application.isPlaying && circleCollider != null)
+        if (circleCollider == null)
         {
             circleCollider = GetComponent<CircleCollider2D>();
         }

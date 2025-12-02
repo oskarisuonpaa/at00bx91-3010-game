@@ -94,12 +94,13 @@ public class PlayerMovement : MonoBehaviour
 
         speedBoostActive = true;
 
-        originalSpeed = moveSpeed;
+        float preBoostSpeed = moveSpeed;
         moveSpeed += moveSpeed * percent;
 
         yield return new WaitForSeconds(duration);
 
-        moveSpeed = originalSpeed;
+        moveSpeed = preBoostSpeed;
+
         speedBoostActive = false;
     }
 
