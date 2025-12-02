@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float cameraZoomMultiplier = 2f;
 
     [Header("Speed Adjustment Settings")]
-    public float speedDecayRate = 0.3f; // How much speed decreases with size
+    public float speedDecayRate = 0.05f; // How much speed decreases with size
     public float minSpeed = 2f; // Minimum movement speed
 
     private float originalSpeed;
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Player slows down as they grow larger
         float sizeScale = transform.localScale.x;
-        float calculatedSpeed = moveSpeed / (1f + (sizeScale - 1f) * speedDecayRate);
+        float calculatedSpeed = originalSpeed / (1f + (sizeScale - 1f) * speedDecayRate);
         return Mathf.Max(calculatedSpeed, minSpeed);
     }
 
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
         speedBoostActive = true;
 
-        float originalSpeed = moveSpeed;
+        originalSpeed = moveSpeed;
         moveSpeed += moveSpeed * percent;
 
         yield return new WaitForSeconds(duration);

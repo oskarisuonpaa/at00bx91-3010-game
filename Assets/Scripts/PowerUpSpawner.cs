@@ -5,10 +5,10 @@ public class PowerupSpawner : MonoBehaviour
     public GameObject[] powerups;
     public float spawnInterval = 20f;
 
-    private float minX = -50f;
-    private float maxX = 50f;
-    private float minY = -50f;
-    private float maxY = 50f;
+    private readonly float minX = -50f;
+    private readonly float maxX = 50f;
+    private readonly float minY = -50f;
+    private readonly float maxY = 50f;
 
     private void Start()
     {
