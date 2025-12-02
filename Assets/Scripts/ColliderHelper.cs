@@ -33,7 +33,7 @@ public class ColliderHelper : MonoBehaviour
     void Start()
     {
         // Auto-find collider if not assigned
-        if (circleCollider == null)
+        if (!Application.isPlaying && circleCollider != null)
         {
             circleCollider = GetComponent<CircleCollider2D>();
         }
