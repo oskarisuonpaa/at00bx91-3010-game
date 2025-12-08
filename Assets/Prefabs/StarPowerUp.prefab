@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2890604274059822352}
   m_Layer: 0
   m_Name: StarPowerUp
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,9 +70,9 @@ PolygonCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.77, y: 1.55, z: 0.85999995, w: 1.7199999}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 6}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 4.5, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -4942353839622133596, guid: 9f0f21ef6e71d98449a4b98b1f7b9483, type: 3}
+  m_Sprite: {fileID: -264453788427959722, guid: a0800014e7561c64ab52e2cc42080d00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,4 +157,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoublePointsPowerUp
   duration: 10
-  starSprite: {fileID: -4942353839622133596, guid: 9f0f21ef6e71d98449a4b98b1f7b9483, type: 3}
+  starSprite: {fileID: -264453788427959722, guid: a0800014e7561c64ab52e2cc42080d00, type: 3}

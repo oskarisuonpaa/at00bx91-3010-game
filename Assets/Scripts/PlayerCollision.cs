@@ -15,6 +15,11 @@ public class PlayerCollision : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    // audio effects
+    public AudioSource audioSource;
+    public AudioClip eatClip;
+    public AudioClip powerUpClip;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,6 +54,13 @@ public class PlayerCollision : MonoBehaviour
         {
             Destroy(other.gameObject);
             Grow();
+            audioSource.PlayOneShot(eatClip);
+        }
+
+        // sound effect for powerup
+        if (other.CompareTag("Powerup")) 
+        {
+            audioSource.PlayOneShot(powerUpClip);
         }
     }
 

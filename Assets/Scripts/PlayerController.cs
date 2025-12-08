@@ -24,16 +24,37 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 moveVelocity;
 
+    // change the color of the player sprite
+    private SpriteRenderer playerCircleSprite; 
+    public SkinRenderer skinRenderer;
+
     void Start()
     {
         originalSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
+        playerCircleSprite = GetComponent<SpriteRenderer>();
 
         // Auto-find camera if not assigned
         if (playerCamera == null)
         {
             playerCamera = Camera.main;
         }
+
+                // Check if player had chosen color in Customize menu
+        if (PlayerPrefs.HasKey("PlayerColorR"))
+        {
+            // Load saved color
+            float r = PlayerPrefs.GetFloat("PlayerColorR", 1f);
+            float g = PlayerPrefs.GetFloat("PlayerColorG", 1f);
+            float b = PlayerPrefs.GetFloat("PlayerColorB", 1f);
+            float a = PlayerPrefs.GetFloat("PlayerColorA", 1f);
+            playerCircleSprite.color = new Color(r, g, b, a);
+        }
+        else
+        {
+            playerCircleSprite.color = skinRenderer.colorOptions[0];
+        }
+
     }
 
     void Update()
