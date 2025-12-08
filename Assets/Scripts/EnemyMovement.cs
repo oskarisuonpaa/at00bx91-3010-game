@@ -1,16 +1,16 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float visionRange = 5f;       // How far the enemy can "see"
-    public float speed = 2f;             // Movement speed
-    public Transform player;             // Reference to player circle
-    public float searchInterval = 0.5f;  // How often to refresh food search
+    public float visionRange = 5f; // How far the enemy can "see"
+    public float speed = 2f; // Movement speed
+    public Transform player; // Reference to player circle
+    public float searchInterval = 0.5f; // How often to refresh food search
 
     private Transform currentFoodTarget;
-    private Rigidbody2D rb;              // Rigidbody reference
-    private Vector2 chaseTarget;         // Current target position
+    private Rigidbody2D rb; // Rigidbody reference
+    private Vector2 chaseTarget; // Current target position
 
     private void Start()
     {
@@ -20,8 +20,10 @@ public class EnemyMovement : MonoBehaviour
         if (player == null)
         {
             GameObject p = GameObject.FindGameObjectWithTag("Player");
-            if (p != null) player = p.transform;
-            else Debug.LogError("No Player found in scene!");
+            if (p != null)
+                player = p.transform;
+            else
+                Debug.LogError("No Player found in scene!");
         }
 
         StartCoroutine(FoodSearchRoutine());
@@ -32,7 +34,14 @@ public class EnemyMovement : MonoBehaviour
         if (CanSeePlayer())
         {
             float dist = Vector2.Distance(transform.position, player.position);
-            Debug.Log("Enemy at " + transform.position + " sees Player at " + player.position + " distance: " + dist);
+            Debug.Log(
+                "Enemy at "
+                    + transform.position
+                    + " sees Player at "
+                    + player.position
+                    + " distance: "
+                    + dist
+            );
 
             if (IsBiggerThanPlayer())
             {
@@ -59,7 +68,11 @@ public class EnemyMovement : MonoBehaviour
         // Physics-friendly movement
         if (chaseTarget != Vector2.zero)
         {
-            Vector2 newPos = Vector2.MoveTowards(rb.position, chaseTarget, speed * Time.fixedDeltaTime);
+            Vector2 newPos = Vector2.MoveTowards(
+                rb.position,
+                chaseTarget,
+                speed * Time.fixedDeltaTime
+            );
             rb.MovePosition(newPos);
         }
     }
@@ -72,6 +85,15 @@ public class EnemyMovement : MonoBehaviour
 
     bool IsBiggerThanPlayer()
     {
+        // Use mass comparison if available, otherwise fall back to scale
+        Rigidbody2D myRigidBody = GetComponent<Rigidbody2D>();
+        Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
+
+        if (myRigidBody != null && playerRigidbody != null)
+        {
+            return myRigidBody.mass > playerRigidbody.mass;
+        }
+
         return transform.localScale.x > player.localScale.x;
     }
 
@@ -86,7 +108,8 @@ public class EnemyMovement : MonoBehaviour
 
             foreach (GameObject massCell in massCells)
             {
-                if (massCell == null) continue;
+                if (massCell == null)
+                    continue;
                 float dist = Vector2.Distance(transform.position, massCell.transform.position);
                 if (dist < minDist)
                 {
