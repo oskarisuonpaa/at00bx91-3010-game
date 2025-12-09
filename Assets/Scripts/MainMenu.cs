@@ -8,6 +8,17 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
+    // added Customize player button for MainScene
+    public void CustomizePlayer()
+    {
+        SceneManager.LoadScene("SkinSelection");
+    }
+    // added Back Button to SkinSelection scene
+    public void BackToStartScene()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
     public void ExitGame()
     {
         Application.Quit();

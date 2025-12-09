@@ -25,13 +25,19 @@ public class CircleSpawner : MonoBehaviour
 
     public void SpawnCircle()
     {
+        float scale = 1f;
+
+        // calculate radius from prefab sprite size
+        float circleRadius = circlePrefab.GetComponent<SpriteRenderer>().bounds.extents.x;
+        float radius = circleRadius * scale;
+
         // Random position inside 100x100 square
-        float x = Random.Range(-mapSize / 2, mapSize / 2);
-        float y = Random.Range(-mapSize / 2, mapSize / 2);
+        float x = Random.Range(-mapSize / 2 + radius, mapSize / 2 - radius);
+        float y = Random.Range(-mapSize / 2 + radius, mapSize / 2 - radius);
         Vector2 spawnPos = new Vector2(x, y);
 
         GameObject circle = Instantiate(circlePrefab, spawnPos, Quaternion.identity);
-        circle.transform.localScale = new Vector3(2f, 2f, 1f);
+        circle.transform.localScale = new Vector3(scale, scale, 1f);
 
         // Hook destruction callback to notify spawner of the amount of it's children
         CircleBehavior behavior = circle.AddComponent<CircleBehavior>();

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8892193533639649418}
   m_Layer: 0
   m_Name: SpeedPowerUp
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 5912956795429546524, guid: 9f0f21ef6e71d98449a4b98b1f7b9483, type: 3}
+  m_Sprite: {fileID: -7471829679465317645, guid: 68ff51c1f4f64cb4ba0cb5c5817c2774, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,9 +128,9 @@ PolygonCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.72999996, y: 1.18, z: 1.22, w: 1.42}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.5, y: 6}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 4, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -193,4 +193,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpeedPowerUp
   percent: 0.3
   duration: 15
-  speedSprite: {fileID: 5912956795429546524, guid: 9f0f21ef6e71d98449a4b98b1f7b9483, type: 3}
+  speedSprite: {fileID: -7471829679465317645, guid: 68ff51c1f4f64cb4ba0cb5c5817c2774, type: 3}

@@ -15,6 +15,11 @@ public class PlayerCollision : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    // audio effects
+    public AudioSource audioSource;
+    public AudioClip eatClip;
+    public AudioClip powerUpClip;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,6 +27,11 @@ public class PlayerCollision : MonoBehaviour
         {
             rb.mass = baseMass;
         }
+    }
+
+    bool IsBiggerThan(Transform other)
+    {
+        return transform.localScale.x > other.localScale.x;
     }
 
     public void ShowPowerupIcon(Sprite icon)
@@ -49,6 +59,13 @@ public class PlayerCollision : MonoBehaviour
         {
             Destroy(other.gameObject);
             Grow();
+            audioSource.PlayOneShot(eatClip);
+        }
+
+        // sound effect for powerup
+        if (other.CompareTag("Powerup")) 
+        {
+            audioSource.PlayOneShot(powerUpClip);
         }
     }
 
@@ -57,20 +74,22 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Use Rigidbody2D mass for comparison instead of scale
-            float myMass = rb != null ? rb.mass : transform.localScale.x;
-            float enemyMass =
-                collision.rigidbody != null
-                    ? collision.rigidbody.mass
-                    : collision.transform.localScale.x;
+            // float myMass = rb != null ? rb.mass : transform.localScale.x;
+            // float enemyMass =
+            //     collision.rigidbody != null
+            //         ? collision.rigidbody.mass
+            //         : collision.transform.localScale.x;
 
             // --- SHIELD BEHAVIOR ---
             if (isShielded)
             {
-                if (myMass > enemyMass)
+                // if (myMass > enemyMass)
+                if (IsBiggerThan(collision.transform))
                 {
                     // Shield + Player is bigger -> eat enemy
                     Destroy(collision.gameObject);
                     Grow();
+                    FindAnyObjectByType<GameOverManager>().GameOver(true); //voitto
                 }
                 else
                 {
@@ -83,14 +102,17 @@ public class PlayerCollision : MonoBehaviour
             }
 
             // --- NORMAL BEHAVIOR (no shield) ---
-            if (myMass > enemyMass)
+            // if (myMass > enemyMass)
+            if (IsBiggerThan(collision.transform))
             {
                 Destroy(collision.gameObject);
                 Grow();
+                FindAnyObjectByType<GameOverManager>().GameOver(true); // voitto
             }
             else
             {
                 Destroy(gameObject);
+                FindAnyObjectByType<GameOverManager>().GameOver(false); // häviö
             }
         }
     }
