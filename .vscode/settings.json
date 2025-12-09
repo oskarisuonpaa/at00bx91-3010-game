@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "at00bx91-3010-game.slnx"
+    "dotnet.defaultSolution": "at00bx91-3010-game-vaskuv.slnx"
 }

@@ -42,6 +42,13 @@ public class LoginSceneManager : MonoBehaviour
         registerPanel.SetActive(true);
     }
 
+    public void ShowMainMenuPanel()
+    {
+        mainMenuPanel.SetActive(true);
+        registerPanel.SetActive(false);
+        loginPanel.SetActive(false);
+    }
+
     // === Login ===
     public void SendLogin()
     {
